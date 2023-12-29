@@ -1,19 +1,10 @@
 import { Hono } from 'hono';
+import { route as hello } from './routes/hello';
 
 export function createApp(basePath: string) {
 	const app = new Hono().basePath(basePath);
 
-	const route = app
-		.get('/', (c) => {
-			return c.json({
-				message: 'Hello World!'
-			});
-		})
-		.get('/hello', (c) => {
-			return c.json({
-				message: 'Hello Hono!'
-			});
-		});
+	const route = app.route('/hello', hello);
 
 	return { app, route };
 }
