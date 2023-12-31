@@ -1,9 +1,9 @@
-import { getClient } from '$lib/server/hono/client';
+import { getHonoClient } from '$lib/server/hono';
 import { error } from '@sveltejs/kit';
 
 export const load = async ({ fetch }) => {
-	const client = getClient({ fetch });
-	const res = await client.hello.$get();
+	const client = getHonoClient(fetch);
+	const res = await client.api.hello.$get();
 	if (!res.ok) {
 		error(500);
 	}

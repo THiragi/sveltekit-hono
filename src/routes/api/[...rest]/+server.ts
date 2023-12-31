@@ -1,6 +1,4 @@
-import { createApp } from '$lib/server/hono/app';
-
-const { app } = createApp('/api');
+import { app } from '$lib/server/hono';
 
 export const GET = async ({ request }) => {
 	return await app.fetch(request);
